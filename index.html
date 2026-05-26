@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Bihari Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#060816;
+color:white;
+overflow-x:hidden;
+}
+
+/* Animated Background */
+.bg-animation{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.bg-animation span{
+position:absolute;
+display:block;
+width:25px;
+height:25px;
+background:rgba(255,255,255,0.1);
+animation:animate 25s linear infinite;
+bottom:-150px;
+border-radius:50%;
+}
+
+.bg-animation span:nth-child(1){left:10%;width:80px;height:80px;animation-duration:12s;background:#ff00cc44;}
+.bg-animation span:nth-child(2){left:20%;width:30px;height:30px;animation-duration:18s;background:#00e5ff44;}
+.bg-animation span:nth-child(3){left:35%;width:100px;height:100px;animation-duration:20s;background:#ffcc0044;}
+.bg-animation span:nth-child(4){left:50%;width:50px;height:50px;animation-duration:16s;background:#00ff8844;}
+.bg-animation span:nth-child(5){left:70%;width:120px;height:120px;animation-duration:25s;background:#ff444444;}
+.bg-animation span:nth-child(6){left:85%;width:60px;height:60px;animation-duration:14s;background:#8b5cf644;}
+
+@keyframes animate{
+0%{transform:translateY(0) rotate(0deg);opacity:0;}
+100%{transform:translateY(-1200px) rotate(720deg);opacity:1;}
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(12px);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+background:linear-gradient(90deg,#ff00cc,#00e5ff,#ffcc00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:logoGlow 3s infinite alternate;
+}
+
+@keyframes logoGlow{
+from{filter:drop-shadow(0 0 10px #ff00cc);}
+to{filter:drop-shadow(0 0 25px #00e5ff);}
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+transition:0.3s;
+font-size:15px;
+}
+
+nav a:hover{
+color:#00e5ff;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero-logo{
+width:170px;
+height:170px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0080,#7928ca,#00e5ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px;
+box-shadow:0 0 50px #00e5ff;
+animation:spin 8s linear infinite,pulse 2s infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+@keyframes pulse{
+50%{transform:scale(1.08);}
+}
+
+.hero h1{
+font-size:65px;
+margin-top:25px;
+background:linear-gradient(90deg,#ff00cc,#00e5ff,#ffcc00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:textMove 4s infinite alternate;
+}
+
+@keyframes textMove{
+0%{letter-spacing:1px;}
+100%{letter-spacing:6px;}
+}
+
+.hero p{
+margin-top:15px;
+max-width:700px;
+font-size:18px;
+color:#d1d5db;
+line-height:1.8;
+}
+
+.hero button{
+padding:16px 40px;
+border:none;
+border-radius:40px;
+margin-top:30px;
+font-size:18px;
+font-weight:700;
+background:linear-gradient(90deg,#ff0080,#7928ca,#00e5ff);
+color:white;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 25px rgba(255,255,255,0.2);
+}
+
+.hero button:hover{
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 0 40px #00e5ff;
+}
+
+.section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:45px;
+margin-bottom:60px;
+background:linear-gradient(90deg,#00e5ff,#ff00cc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+border-radius:25px;
+backdrop-filter:blur(15px);
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,transparent,#00e5ff33,transparent);
+transform:rotate(45deg);
+top:-150%;
+left:-150%;
+transition:0.8s;
+}
+
+.card:hover::before{
+top:100%;
+left:100%;
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 0 40px rgba(0,229,255,0.3);
+}
+
+.card h3{
+font-size:26px;
+margin-bottom:15px;
+}
+
+.card p{
+color:#d1d5db;
+line-height:1.7;
+}
+
+.login-box{
+max-width:500px;
+margin:auto;
+background:rgba(255,255,255,0.06);
+padding:40px;
+border-radius:30px;
+backdrop-filter:blur(15px);
+box-shadow:0 0 40px rgba(0,0,0,0.4);
+animation:slideUp 1s ease;
+}
+
+@keyframes slideUp{
+0%{opacity:0;transform:translateY(50px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+input{
+width:100%;
+padding:16px;
+margin-top:18px;
+border:none;
+border-radius:16px;
+background:rgba(255,255,255,0.08);
+color:white;
+font-size:15px;
+outline:none;
+transition:0.3s;
+}
+
+input:focus{
+transform:scale(1.02);
+box-shadow:0 0 20px #00e5ff;
+}
+
+.login-box button,.service-btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:16px;
+margin-top:20px;
+background:linear-gradient(90deg,#ff0080,#7928ca,#00e5ff);
+color:white;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+}
+
+.login-box button:hover,.service-btn:hover{
+transform:scale(1.03);
+}
+
+.dashboard{
+display:none;
+}
+
+.balance-box{
+text-align:center;
+padding:25px;
+font-size:32px;
+font-weight:700;
+background:rgba(255,255,255,0.06);
+border-radius:25px;
+margin-bottom:40px;
+color:#00ff99;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px #00ff99;}
+to{box-shadow:0 0 35px #00ff99;}
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.service-card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:25px;
+transition:0.4s;
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(255,255,255,0.15);
+}
+
+.price{
+font-size:24px;
+margin:15px 0;
+color:#ffcc00;
+}
+
+.result{
+margin-top:10px;
+font-weight:700;
+color:#00ff99;
+}
+
+.footer{
+padding:40px;
+text-align:center;
+background:#02040f;
+margin-top:80px;
+}
+
+.footer a{
+text-decoration:none;
+color:#ff66cc;
+font-weight:700;
+}
+
+.popup{
+position:fixed;
+top:20px;
+right:20px;
+background:linear-gradient(90deg,#ff0080,#00e5ff);
+padding:16px 30px;
+border-radius:15px;
+display:none;
+z-index:9999;
+font-weight:700;
+animation:popup 0.5s ease;
+}
+
+@keyframes popup{
+0%{opacity:0;transform:translateY(-20px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:768px){
+.hero h1{font-size:42px;}
+header{padding:15px 20px;}
+nav{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-animation">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="popup" id="popup"></div>
+
+<header>
+<div class="logo">🚀 Bihari Panel</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#features">Features</a>
+<a href="#login">Login</a>
+<a href="#dashboardSection">Dashboard</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-logo">🔥</div>
+<h1>PREMIUM SMM PANEL</h1>
+<p>
+Fast Instagram & Facebook Services With Ultra Premium Design, Live Balance System, Animations, Modern Dashboard & Powerful SMM Features.
+</p>
+<button onclick="scrollToLogin()">✨ Open Panel</button>
+</section>
+
+<section class="section" id="features">
+<h2 class="section-title">🔥 Premium Features</h2>
+
+<div class="cards">
+<div class="card">
+<h3>🚀 Ultra Fast</h3>
+<p>Modern animated SMM panel with smooth transitions and glowing effects.</p>
+</div>
+
+<div class="card">
+<h3>💰 Live Balance</h3>
+<p>Add funds instantly and see real-time balance updates with animations.</p>
+</div>
+
+<div class="card">
+<h3>📸 Social Services</h3>
+<p>Instagram and Facebook followers, likes, views and engagement services.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="login">
+<h2 class="section-title">🔐 Login Panel</h2>
+
+<div class="login-box" id="loginBox">
+<input type="text" id="username" placeholder="👤 Enter Your Name">
+<input type="password" id="password" placeholder="🔒 Enter Password">
+<button onclick="login()">✨ ENTER PANEL ✨</button>
+</div>
+</section>
+
+<section class="section dashboard" id="dashboardSection">
+<h2 class="section-title">🎉 Dashboard</h2>
+
+<div class="balance-box">
+💰 Balance ₹<span id="balance">0</span>
+</div>
+
+<div class="service-card" style="margin-bottom:40px;">
+<h3>💸 Add Fund</h3>
+<div class="price">📱 Pay On This Number: 7979788288</div>
+
+<p style="margin-bottom:15px;color:#d1d5db;line-height:1.7;">
+✨ Pay money on this number and get balance in your page ✨
+</p>
+
+<input type="text" id="utrNumber" placeholder="🧾 Enter UTR Number">
+<input type="number" id="fundAmount" placeholder="💵 Enter Amount You Paid">
+
+<button class="service-btn" onclick="addFund()">➕ Submit Payment</button>
+</div>
+
+<div class="service-grid">
+<div class="service-card">
+<h3>👀 Instagram Views</h3>
+<div class="price">1000 Views = ₹2</div>
+<input type="text" placeholder="🔗 Paste Instagram Link">
+<input type="number" id="qty1" placeholder="📦 Enter Quantity">
+<button class="service-btn" onclick="calculate('qty1',2,'result1')">🧮 Calculate Price</button>
+<div class="result" id="result1"></div>
+<button class="service-btn" onclick="buy('Instagram Views')">🛒 Buy Now</button>
+</div>
+
+<div class="service-card">
+<h3>👥 Instagram Followers</h3>
+<div class="price">1000 Followers = ₹100</div>
+<input type="text" placeholder="🔗 Paste Instagram Link">
+<input type="number" id="qty2" placeholder="📦 Enter Quantity">
+<button class="service-btn" onclick="calculate('qty2',100,'result2')">🧮 Calculate Price</button>
+<div class="result" id="result2"></div>
+<button class="service-btn" onclick="buy('Instagram Followers')">🛒 Buy Now</button>
+</div>
+
+<div class="service-card">
+<h3>❤️ Instagram Likes</h3>
+<div class="price">1000 Likes = ₹30</div>
+<input type="text" placeholder="🔗 Paste Instagram Link">
+<input type="number" id="qty3" placeholder="📦 Enter Quantity">
+<button class="service-btn" onclick="calculate('qty3',30,'result3')">🧮 Calculate Price</button>
+<div class="result" id="result3"></div>
+<button class="service-btn" onclick="buy('Instagram Likes')">🛒 Buy Now</button>
+</div>
+
+<div class="service-card">
+<h3>👀 Facebook Views</h3>
+<div class="price">1000 Views = ₹10</div>
+<input type="text" placeholder="🔗 Paste Facebook Link">
+<input type="number" id="qty4" placeholder="📦 Enter Quantity">
+<button class="service-btn" onclick="calculate('qty4',10,'result4')">🧮 Calculate Price</button>
+<div class="result" id="result4"></div>
+<button class="service-btn" onclick="buy('Facebook Views')">🛒 Buy Now</button>
+</div>
+
+<div class="service-card">
+<h3>👥 Facebook Followers</h3>
+<div class="price">1000 Followers = ₹110</div>
+<input type="text" placeholder="🔗 Paste Facebook Link">
+<input type="number" id="qty5" placeholder="📦 Enter Quantity">
+<button class="service-btn" onclick="calculate('qty5',110,'result5')">🧮 Calculate Price</button>
+<div class="result" id="result5"></div>
+<button class="service-btn" onclick="buy('Facebook Followers')">🛒 Buy Now</button>
+</div>
+
+<div class="service-card">
+<h3>❤️ Facebook Likes</h3>
+<div class="price">1000 Likes = ₹35</div>
+<input type="text" placeholder="🔗 Paste Facebook Link">
+<input type="number" id="qty6" placeholder="📦 Enter Quantity">
+<button class="service-btn" onclick="calculate('qty6',35,'result6')">🧮 Calculate Price</button>
+<div class="result" id="result6"></div>
+<button class="service-btn" onclick="buy('Facebook Likes')">🛒 Buy Now</button>
+</div>
+
+
+
+
+</div>
+</section>
+
+<footer class="footer">
+<p>📲 Instagram Accounts</p>
+<br>
+<a href="https://instagram.com/official_piyush_gupta_701" target="_blank">@official_piyush_gupta_701</a>
+<br><br>
+<a href="https://instagram.com/its_rajeshyadav_07" target="_blank">@its_rajeshyadav_07</a>
+<br><br>
+<a href="https://instagram.com/piyush_gupta_701" target="_blank">@piyush_gupta_701</a>
+</footer>
+
+<script>
+
+function scrollToLogin(){
+document.getElementById('login').scrollIntoView({behavior:'smooth'});
+}
+
+function login(){
+let username=document.getElementById('username').value;
+let password=document.getElementById('password').value;
+
+if(username==='' || password===''){
+showPopup('⚠️ Enter Name And Password');
+return;
+}
+
+document.getElementById('dashboardSection').style.display='block';
+document.getElementById('dashboardSection').scrollIntoView({behavior:'smooth'});
+
+showPopup('🎉 Welcome '+username);
+}
+
+function addFund(){
+
+let utr=document.getElementById('utrNumber').value;
+let amount=parseInt(document.getElementById('fundAmount').value);
+
+if(utr==='' || !amount){
+showPopup('⚠️ Enter UTR And Amount');
+return;
+}
+
+let currentBalance=parseInt(document.getElementById('balance').innerText);
+
+currentBalance+=amount;
+
+document.getElementById('balance').innerText=currentBalance;
+
+showPopup('✅ ₹'+amount+' Added Successfully');
+
+document.getElementById('utrNumber').value='';
+document.getElementById('fundAmount').value='';
+}
+
+function calculate(id,price,result){
+let qty=parseInt(document.getElementById(id).value);
+
+if(!qty){
+showPopup('⚠️ Enter Quantity');
+return;
+}
+
+let total=(qty/1000)*price;
+document.getElementById(result).innerHTML='💰 Total Price = ₹'+total;
+}
+
+function buy(service){
+showPopup('❤️ Thank You For Trust On This Website');
+
+setTimeout(()=>{
+alert('✅ Your Order For '+service+' Is Accepted Successfully');
+},500);
+}
+
+function showPopup(message){
+let popup=document.getElementById('popup');
+popup.innerText=message;
+popup.style.display='block';
+
+setTimeout(()=>{
+popup.style.display='none';
+},3000);
+}
+
+</script>
+
+</body>
+</html>
